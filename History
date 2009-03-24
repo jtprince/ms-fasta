@@ -1,0 +1,4 @@
+== 0.1.0 / 2009-03-24
+
+Initial release with tasks to load entries
+from a FASTA file.

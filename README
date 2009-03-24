@@ -1,6 +1,6 @@
 = {Ms-Fasta}[http://mspire.rubyforge.org/projects/ms-fasta]
 
-An {Mspire}[http://mspire.rubyforge.org] library for working with {FASTA}[http://en.wikipedia.org/wiki/Fasta_format] databases.
+An {Mspire}[http://mspire.rubyforge.org] library for working with {FASTA}[http://en.wikipedia.org/wiki/Fasta_format] files.
 
 == Description
 

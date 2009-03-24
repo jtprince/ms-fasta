@@ -4,8 +4,8 @@ module Ms
   module Load
     # :startdoc::manifest selects n random fasta entries
     #
-    # Use RandomFasta to select random fasta entries from a fasta file.
-    # Entries are returned as an array.
+    # Selects random fasta entries from a fasta file. Entries are returned as
+    # an array, and by default as Ms::Fasta::Entry objects.
     #
     class RandomFasta < Tap::Task
   

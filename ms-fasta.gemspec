@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "ms-fasta"
-  s.version = "0.0.1"
+  s.version = "0.1.0"
   s.author = "Simon Chiang"
   s.email = "simon.a.chiang@gmail.com"
   s.homepage = "http://mspire.rubyforge.org/projects/ms-fasta"
@@ -23,6 +23,10 @@ Gem::Specification.new do |s|
   # list the files you want to include here. you can
   # check this manifest using 'rap print_manifest'
   s.files = %W{
+    lib/ms/fasta/archive.rb
+    lib/ms/fasta/entry.rb
+    lib/ms/load/fasta.rb
+    lib/ms/load/random_fasta.rb
     tap.yml
   }
 end
