@@ -12,7 +12,8 @@ module Ms
     #   IENY
     #   }.strip
     #
-    
+    #   entry.header[0,30]       # => 'gi|5524211|gb|AAD44166.1| cyto'
+    #   entry.sequence[0,30]     # => 'LCLYTHIGRNIYYGSYLYSETWNTGIMLLL'
     #
     class Entry
       class << self
