@@ -1,0 +1,22 @@
+= {Ms-Fasta}[http://mspire.rubyforge.org/projects/ms-fasta]
+
+An {Mspire}[http://mspire.rubyforge.org] library for working with {FASTA}[http://en.wikipedia.org/wiki/Fasta_format] databases.
+
+== Description
+
+* Lighthouse[http://bahuvrihi.lighthouseapp.com/projects/16692-mspire/tickets]
+* Github[http://github.com/bahuvrihi/ms-fasta/tree/master]
+* {Google Group}[http://groups.google.com/group/mspire-forum]
+
+== Installation
+
+Ms-Fasta is available as a gem on RubyForge[http://rubyforge.org/projects/mspire].  Use:
+
+  % gem install ms-fasta
+
+== Info 
+
+Copyright (c) 2009, Regents of the University of Colorado.
+Developer:: {Simon Chiang}[http://bahuvrihi.wordpress.com], {Biomolecular Structure Program}[http://biomol.uchsc.edu/], {Hansen Lab}[http://hsc-proteomics.uchsc.edu/hansenlab/] 
+Support:: CU Denver School of Medicine Deans Academic Enrichment Fund
+Licence:: {MIT-Style}[link:files/MIT-LICENSE.html]
