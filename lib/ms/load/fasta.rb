@@ -1,18 +1,18 @@
 require 'ms/fasta/archive'
 
 module Ms
-  module Fasta
-    # Ms::Fasta::Load::manifest loads entries in a fasta file
+  module Load
+    # :startdoc::manifest loads entries in a fasta file
     #
     # Loads entries from a fasta file.
     #
-    class Load < Tap::Task
+    class Fasta < Tap::Task
       
       config :range, 0..10, &c.range     # the range of entries to select
       config :fasta, false, &c.switch    # returns entries as fasta strings
         
       def process(fasta_file)
-        Archive.open(fasta_file) do |archive|
+        Ms::Fasta::Archive.open(fasta_file) do |archive|
           entries = archive[range]
           
           # totally wasteful... ExternalArchive needs

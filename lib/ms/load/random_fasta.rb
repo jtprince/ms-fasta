@@ -1,13 +1,13 @@
 require 'ms/fasta/archive'
 
 module Ms
-  module Fasta
-    # ::manifest selects n random fasta entries
+  module Load
+    # :startdoc::manifest selects n random fasta entries
     #
-    # Use RandomEntry to select random fasta entries from a fasta file.
+    # Use RandomFasta to select random fasta entries from a fasta file.
     # Entries are returned as an array.
     #
-    class RandomEntry < Tap::Task
+    class RandomFasta < Tap::Task
   
       config :n, 1, &c.integer           # the number of fasta to select
       config :fasta, false, &c.switch    # returns entries as fasta strings
