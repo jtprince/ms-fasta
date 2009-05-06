@@ -1,6 +1,7 @@
-== 0.1.1 / 2009-05-06
+== 0.2.0 / 2009-05-06
 
 * updated to use tap-0.17.0
+* moved random_fasta to random namespace
 
 == 0.1.0 / 2009-03-24
 
