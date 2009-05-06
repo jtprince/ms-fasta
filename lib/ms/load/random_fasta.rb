@@ -2,7 +2,7 @@ require 'ms/fasta/archive'
 
 module Ms
   module Load
-    # :startdoc::manifest selects n random fasta entries
+    # :startdoc::task selects n random fasta entries
     #
     # Selects random fasta entries from a fasta file. Entries are returned as
     # an array, and by default as Ms::Fasta::Entry objects.

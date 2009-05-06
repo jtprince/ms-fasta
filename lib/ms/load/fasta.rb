@@ -2,7 +2,7 @@ require 'ms/fasta/archive'
 
 module Ms
   module Load
-    # :startdoc::manifest loads entries in a fasta file
+    # :startdoc::task loads entries in a fasta file
     #
     # Loads entries from a fasta file.  Entries are returned as an array and
     # by default as Ms::Fasta::Entry objects.
