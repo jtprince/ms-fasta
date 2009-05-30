@@ -1,29 +1,38 @@
-require 'ms/fasta/archive'
+require 'tap/tasks/load'
+require 'ms/fasta/entry'
 
 module Ms
   module Load
     # :startdoc::task loads entries in a fasta file
     #
-    # Loads entries from a fasta file.  Entries are returned as an array and
-    # by default as Ms::Fasta::Entry objects.
+    # Loads entries from a fasta file.  Entries are converted to
+    # Ms::Fasta::Entry objects unless the fasta config is specified.
     #
-    class Fasta < Tap::Task
+    class Fasta < Tap::Tasks::Load
+      Entry = Ms::Fasta::Entry
       
-      config :range, 0..10, &c.range     # the range of entries to select
-      config :fasta, false, &c.switch    # returns entries as fasta strings
+      config :fasta, false, &c.switch         # returns entries as fasta strings
+      
+      def load(io)
+        str = io.readline(">")
+        if str == ">"
+          str = io.readline(">")
+        end
         
-      def process(fasta_file)
-        Ms::Fasta::Archive.open(fasta_file) do |archive|
-          entries = archive[range]
+        if fasta
+          ">#{str.chomp('>')}"
+        else
+          lines = str.split(/\r?\n/)
+          lines.pop if lines[-1] == ">"
           
-          # totally wasteful... ExternalArchive needs
-          # a way to read a selection of string without
-          # conversion to entries.
-          # watch (http://bahuvrihi.lighthouseapp.com/projects/10590-external/tickets/7-for-strings)
-          entries.collect! {|entry| entry.to_s } if fasta
-          entries
+          Entry.new(lines.shift, lines.join(''))
         end
       end
+      
+      def complete?(io, last)
+        io.pos == io.stat.size
+      end
+      
     end 
   end
 end
