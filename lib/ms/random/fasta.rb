@@ -9,9 +9,9 @@ module Ms
     #
     class Fasta < Tap::Task
   
-      config :n, 1, &c.integer           # the number of fasta to select
-      config :fasta, false, &c.switch    # returns entries as fasta strings
-      config :distinct, true, &c.switch  # requires entries to be unique by sequence
+      config :n, 1, &c.integer           # The number of fasta to select
+      config :fasta, false, &c.switch    # Returns entries as fasta strings
+      config :distinct, true, &c.switch  # Requires entries to be unique by sequence
     
       def process(fasta_file)
         entries = []

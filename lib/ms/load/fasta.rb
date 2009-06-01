@@ -5,32 +5,38 @@ module Ms
   module Load
     # :startdoc::task loads entries in a fasta file
     #
-    # Loads entries from a fasta file.  Entries are converted to
-    # Ms::Fasta::Entry objects unless the fasta config is specified.
+    # Loads entries from a fasta file.
     #
     class Fasta < Tap::Tasks::Load
       Entry = Ms::Fasta::Entry
       
-      config :fasta, false, &c.switch         # returns entries as fasta strings
+      config :header, true, &c.switch
+      config :sequence, true, &c.switch
       
-      def load(io)
-        str = io.readline(">")
-        if str == ">"
-          str = io.readline(">")
-        end
-        
-        if fasta
-          ">#{str.chomp('>')}"
+      def entry_break?(io)
+        if c = io.getc
+          io.ungetc(c)
+          c == ?>
         else
-          lines = str.split(/\r?\n/)
-          lines.pop if lines[-1] == ">"
-          
-          Entry.new(lines.shift, lines.join(''))
+          true
         end
       end
       
-      def complete?(io, last)
-        io.pos == io.stat.size
+      def load(io)
+        header = io.readline
+        sequence = []
+        while !entry_break?(io)
+          sequence << io.readline
+        end
+        
+        case
+        when !self.header
+          sequence.join('')
+        when !self.sequence
+          header
+        else
+          "#{header}#{sequence.join('')}"
+        end
       end
       
     end 
