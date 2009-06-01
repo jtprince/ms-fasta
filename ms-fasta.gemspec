@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "ms-fasta"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
   s.author = "Simon Chiang"
   s.email = "simon.a.chiang@gmail.com"
   s.homepage = "http://mspire.rubyforge.org/projects/ms-fasta"
@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.summary = "ms-fasta"
   s.require_path = "lib"
   s.rubyforge_project = "mspire"
-  s.add_dependency("tap", ">= 0.17.0")
+  s.add_dependency("tap", ">= 0.17.1")
   s.add_development_dependency("tap-test", ">= 0.1.0")
   s.add_dependency("external", ">= 0.3.0")
   s.has_rdoc = true

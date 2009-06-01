@@ -1,3 +1,8 @@
+==
+
+* reworked load/fasta to load fasta off a stream
+* refactored the previous load/fasta to select/fasta
+
 == 0.2.0 / 2009-05-06
 
 * updated to use tap-0.17.0
