@@ -12,12 +12,12 @@ Gem::Specification.new do |s|
   s.add_development_dependency("tap-test", ">= 0.1.0")
   s.add_dependency("external", ">= 0.3.0")
   s.has_rdoc = true
-  s.rdoc_options.concat %W{--main README -S -N --title Ms-Fasta}
+  s.rdoc_options.concat %W{--main README.rdoc -S -N --title Ms-Fasta}
   
   # list extra rdoc files here.
   s.extra_rdoc_files = %W{
     History
-    README
+    README.rdoc
     MIT-LICENSE
   }
   
