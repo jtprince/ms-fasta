@@ -1,4 +1,8 @@
-==
+== 0.2.2
+
+* transfered tests into specs
+
+== 0.2.1
 
 * reworked load/fasta to load fasta off a stream
 * refactored the previous load/fasta to select/fasta
