@@ -1,3 +1,8 @@
+== 0.2.3
+
+* added Ms::Fasta.new and Ms::Fasta.open methods and specs
+* Ms::Fasta::Archive parsing can handle fasta files with "\r\n"
+
 == 0.2.2
 
 * transfered tests into specs

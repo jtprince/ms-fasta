@@ -25,7 +25,7 @@ module Ms
             raise "input should begin with '>'"
           end
 
-          seq_begin = str.index("\n")
+          seq_begin = str.index(/\r?\n/)
           Entry.new(str[1, seq_begin-1], str[seq_begin, str.length - seq_begin].gsub(/\r?\n/, ""))
         end
       end

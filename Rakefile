@@ -7,7 +7,6 @@ require 'rake/gempackagetask'
 # Gem specification
 #
 
-
 def gemspec
   data = File.read('ms-fasta.gemspec')
   spec = nil
