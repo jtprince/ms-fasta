@@ -7,10 +7,15 @@ require 'rake/gempackagetask'
 # Gem specification
 #
 
+
 def gemspec
   data = File.read('ms-fasta.gemspec')
   spec = nil
   Thread.new { spec = eval("$SAFE = 3\n#{data}") }.join
+  # get the version
+  $: << "lib" unless $:.include?("lib")
+  require 'ms/fasta'
+  spec.version = Ms::Fasta::VERSION
   spec
 end
 

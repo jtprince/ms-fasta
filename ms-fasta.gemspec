@@ -1,6 +1,5 @@
 Gem::Specification.new do |s|
   s.name = "ms-fasta"
-  s.version = "0.2.1"
   s.author = "Simon Chiang"
   s.email = "simon.a.chiang@gmail.com"
   s.homepage = "http://mspire.rubyforge.org/projects/ms-fasta"
