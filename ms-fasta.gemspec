@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   # list the files you want to include here. you can
   # check this manifest using 'rap print_manifest'
   s.files = %W{
+    lib/ms/fasta.rb
     lib/ms/fasta/archive.rb
     lib/ms/fasta/entry.rb
     lib/ms/load/fasta.rb

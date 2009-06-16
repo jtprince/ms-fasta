@@ -1,3 +1,4 @@
+require 'ms/fasta/archive'
 
 module Ms
   module Fasta
