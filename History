@@ -1,6 +1,7 @@
 == 0.2.2
 
 * transfered tests into specs
+* version determined by Ms::Fasta::VERSION
 
 == 0.2.1
 
