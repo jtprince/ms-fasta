@@ -8,7 +8,7 @@ module Ms
 
       # Reindexes self to each FASTA entry in io
       def reindex(&block)
-        reindex_by_sep(nil, :sep_regexp => /\r?\n>/, :sep_length => 1, :entry_follows_sep => true, &block)
+        reindex_by_sep(nil, :sep_regexp => /\n>/, :sep_length => 1, :entry_follows_sep => true, &block)
       end
 
       # Returns a Fasta::Entry initialized using str
