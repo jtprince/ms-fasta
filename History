@@ -1,4 +1,4 @@
-== 0.2.3
+== 0.2.3 / 2009-06-17
 
 * added Ms::Fasta.new and Ms::Fasta.open methods and specs
 * Ms::Fasta::Archive parsing can handle fasta files with "\r\n"
