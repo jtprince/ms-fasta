@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = "ms-fasta"
-  s.version = "0.2.3"
-  s.author = "Simon Chiang"
+  s.version = "0.2.4"
+  s.authors = ["Simon Chiang", "John Prince"]
   s.email = "simon.a.chiang@gmail.com"
   s.homepage = "http://mspire.rubyforge.org/projects/ms-fasta"
   s.platform = Gem::Platform::RUBY
@@ -30,6 +30,8 @@ Gem::Specification.new do |s|
     lib/ms/load/fasta.rb
     lib/ms/random/fasta.rb
     lib/ms/select/fasta.rb
+    lib/ms/fasta/ipi.rb
+    lib/ms/fasta/ipi/dat.rb
     tap.yml
   }
 end
