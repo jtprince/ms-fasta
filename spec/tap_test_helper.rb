@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'tap/test/unit'
-require 'minitest/spec'
+require 'spec-more'
 
-MiniTest::Unit.autorun
+Bacon.summary_on_exit

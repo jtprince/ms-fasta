@@ -65,4 +65,11 @@ class FastaBasicSpec < MiniTest::Spec
     end
   end
 
+  it 'iterates entries with foreach' do
+    Ms::Fasta.foreach(@data[file]) do |entry|
+      entry.isa Ms::Fasta::Entry 
+      p entry
+    end
+  end
+
 end

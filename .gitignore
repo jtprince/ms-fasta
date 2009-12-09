@@ -4,3 +4,4 @@ rdoc
 backup
 *.swp
 *~
+*.gemspec
