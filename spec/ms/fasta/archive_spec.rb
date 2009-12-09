@@ -1,49 +1,49 @@
 require File.join(File.dirname(__FILE__), '../../spec_helper.rb') 
 require 'ms/fasta/archive'
 
-class FastaAchiveTest < Test::Unit::TestCase
+class FastaAchiveSpec
   include Ms::Fasta
-  
-  FASTA_0 = %Q{>gi|5524211|gb|AAD44166.1| cytochrome b [Elephas maximus maximus]
+
+  describe 'fasta archive operations' do
+
+    FASTA_0 = %Q{>gi|5524211|gb|AAD44166.1| cytochrome b [Elephas maximus maximus]
 LCLYTHIGRNIYYGSYLYSETWNTGIMLLLITMATAFMGYVLPWGQMSFWGATVITNLFSAIPYIGTNLV
 GLMPFLHTSKHRSMMLRPLSQALFWTLTMDLLTLTWIGSQPVEYPYTIIGQMASILYFSIILAFLPIAGX
 IENY
 }
 
-  FASTA_1 = %Q{>gi|1048576| protein sequence
+    FASTA_1 = %Q{>gi|1048576| protein sequence
 PROTEIN
 }
 
-  def test_reindex
-    strio = StringIO.new(FASTA_0 + FASTA_1)
-    begin
-      a = Archive.new(strio)
-    
-      assert_equal 0, a.length
-      a.reindex
-      assert_equal 2, a.length
-    
-      assert_equal FASTA_0, a[0].to_s
-      assert_equal FASTA_1, a[1].to_s
-      assert_equal "gi|1048576| protein sequence", a[1].header
-    ensure
-      a.close
+    it 'reindexes' do
+      strio = StringIO.new(FASTA_0 + FASTA_1)
+      begin
+        a = Archive.new(strio)
+
+        a.length.is 0
+        a.reindex
+        a.length.is 2
+
+        a[0].to_s.is FASTA_0
+        a[1].to_s.is FASTA_1
+        a[1].header.is "gi|1048576| protein sequence"
+      ensure
+        a.close
+      end
     end
-  end
-  
-  def test_str_to_entry
-    begin
-      a = Archive.new
-      e = a.str_to_entry(FASTA_0)
-      
-      assert_equal Entry, e.class
-      assert_equal "gi|5524211|gb|AAD44166.1| cytochrome b [Elephas maximus maximus]", e.header
-      assert_equal(
-      "LCLYTHIGRNIYYGSYLYSETWNTGIMLLLITMATAFMGYVLPWGQMSFWGATVITNLFSAIPYIGTNLV" + 
-      "GLMPFLHTSKHRSMMLRPLSQALFWTLTMDLLTLTWIGSQPVEYPYTIIGQMASILYFSIILAFLPIAGX" +
-      "IENY", e.sequence)
-    ensure
-      a.close
+
+    it 'properly converts the fasta string to an entry object' do
+      begin
+        a = Archive.new
+        e = a.str_to_entry(FASTA_0)
+
+        e.isa Entry
+        e.header.is "gi|5524211|gb|AAD44166.1| cytochrome b [Elephas maximus maximus]"
+        e.sequence.is("LCLYTHIGRNIYYGSYLYSETWNTGIMLLLITMATAFMGYVLPWGQMSFWGATVITNLFSAIPYIGTNLV" + "GLMPFLHTSKHRSMMLRPLSQALFWTLTMDLLTLTWIGSQPVEYPYTIIGQMASILYFSIILAFLPIAGX" + "IENY")
+      ensure
+        a.close
+      end
     end
   end
 end

@@ -14,13 +14,10 @@ gemspec = Gem::Specification.new do |s|
   s.authors = ["John T. Prince"]
   s.email = "jtprince@gmail.com"
   s.homepage = "http://jtprince.github.com/" + NAME
-  s.summary = "An mspire library [TODO: that does what?]"
-  s.description = "[TODO: longer description]"
+  s.summary = "An mspire library for working with fasta formatted files"
+  s.description = "provides programmatic access to fasta files"
   s.rubyforge_project = 'mspire'
-  # s.add_dependency("ms-core", ">= 0.0.2")
-  # s.add_development_dependency("ms-testdata", ">= 0.18.0")
-  s.add_development_dependency("bacon", ">= 1.1.0")
-  s.files << "VERSION"
+  s.add_development_dependency("spec-more", ">= 1.1.0")
 end
 
 Jeweler::Tasks.new(gemspec)

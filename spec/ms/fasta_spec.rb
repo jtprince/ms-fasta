@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 require 'ms/fasta'
 
-class FastaBasicSpec < MiniTest::Spec
+describe 'basic fasta operations' do
 
   before do
     @headers = [">gi|5524211 [hello]", ">another B", ">again C"]
@@ -31,13 +31,13 @@ class FastaBasicSpec < MiniTest::Spec
   end
 
   def fasta_correct?(fasta)
-    fasta.size.must_equal 3
+    fasta.size.is 3
     (0...@headers.size).each do |i|
       header, sequence, entry = @headers[i], @sequences[i], fasta[i]
-      assert entry.header
-      assert entry.sequence
-      entry.header.must_equal header[1..-1]
-      entry.sequence.must_equal sequence
+      entry.header.isnt nil
+      entry.sequence.isnt nil
+      entry.header.is header[1..-1]
+      entry.sequence.is sequence
     end
   end
 
@@ -66,9 +66,10 @@ class FastaBasicSpec < MiniTest::Spec
   end
 
   it 'iterates entries with foreach' do
-    Ms::Fasta.foreach(@data[file]) do |entry|
-      entry.isa Ms::Fasta::Entry 
-      p entry
+    %w(newlines_file carriage_returns_and_newlines_file).each do |file|
+      Ms::Fasta.foreach(@data[file]) do |entry|
+        entry.isa Ms::Fasta::Entry 
+      end
     end
   end
 
