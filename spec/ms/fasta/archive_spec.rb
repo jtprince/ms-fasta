@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '../../tap_test_helper.rb') 
+require File.join(File.dirname(__FILE__), '../../spec_helper.rb') 
 require 'ms/fasta/archive'
 
 class FastaAchiveTest < Test::Unit::TestCase

@@ -2,15 +2,23 @@ require 'ms/fasta/archive'
 
 module Ms
   module Fasta
-    VERSION = '0.2.4'
+    def self.new(*args, &block)
+      Ms::Fasta::Archive.new(*args, &block).reindex
+    end
 
     #def self.open(filename, &block)
       #Ms::Fasta::Archive.open(filename, 'rb', [], &block)
     #end
+
     def self.open(*args, &block)
       Ms::Fasta::Archive.open(*args, &block)
     end
 
+    def self.foreach(*args, &block)
+      Ms::Fasta::Archive.open(*args) do |fasta|
+        fasta.each(&block)
+      end
+    end
 
     # returns :ipi, :ncbi, or nil if can't be determined
     def self.filetype(file_or_io)
@@ -66,6 +74,7 @@ module Ms
         nil
       end
     end
+
   end
 end
 

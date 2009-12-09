@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../tap_test_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
 require 'ms/fasta'
 
@@ -62,6 +62,13 @@ class FastaBasicSpec < MiniTest::Spec
     %w(newlines carriage_returns_and_newlines).each do |key|
       fasta = Ms::Fasta.new @data[key]
       fasta_correct? fasta
+    end
+  end
+
+  it 'iterates entries with foreach' do
+    Ms::Fasta.foreach(@data[file]) do |entry|
+      entry.isa Ms::Fasta::Entry 
+      p entry
     end
   end
 
