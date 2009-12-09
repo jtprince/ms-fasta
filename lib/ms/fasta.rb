@@ -2,8 +2,6 @@ require 'ms/fasta/archive'
 
 module Ms
   module Fasta
-    VERSION = '0.2.3'
-
     def self.new(*args, &block)
       Ms::Fasta::Archive.new(*args, &block).reindex
     end
