@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), '../../spec_helper.rb')
 require 'ms/fasta/archive'
 
 class FastaAchiveSpec
-  include Ms::Fasta
+  include 
 
   describe 'fasta archive operations' do
 
@@ -19,7 +19,7 @@ PROTEIN
     it 'reindexes' do
       strio = StringIO.new(FASTA_0 + FASTA_1)
       begin
-        a = Archive.new(strio)
+        a = Ms::Fasta::Archive.new(strio)
 
         a.length.is 0
         a.reindex
@@ -35,10 +35,10 @@ PROTEIN
 
     it 'properly converts the fasta string to an entry object' do
       begin
-        a = Archive.new
+        a = Ms::Fasta::Archive.new
         e = a.str_to_entry(FASTA_0)
 
-        e.isa Entry
+        e.isa Ms::Fasta::Entry
         e.header.is "gi|5524211|gb|AAD44166.1| cytochrome b [Elephas maximus maximus]"
         e.sequence.is("LCLYTHIGRNIYYGSYLYSETWNTGIMLLLITMATAFMGYVLPWGQMSFWGATVITNLFSAIPYIGTNLV" + "GLMPFLHTSKHRSMMLRPLSQALFWTLTMDLLTLTWIGSQPVEYPYTIIGQMASILYFSIILAFLPIAGX" + "IENY")
       ensure

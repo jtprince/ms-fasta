@@ -2,7 +2,6 @@ require File.join(File.dirname(__FILE__), '../../spec_helper.rb')
 require 'ms/fasta/entry'
 
 class FastaEntryTest
-  include Ms::Fasta
   
   describe 'basic Entry operations' do
     # Abbreviated FASTA entry from wikipedia (http://en.wikipedia.org/wiki/FASTA_format)
@@ -17,7 +16,7 @@ IENY
     #
 
     it 'parses an entry as per docs' do
-      entry = Entry.parse %q{
+      entry = Ms::Fasta::Entry.parse %q{
 >gi|5524211|gb|AAD44166.1| cytochrome b [Elephas maximus maximus]
 LCLYTHIGRNIYYGSYLYSETWNTGIMLLLITMATAFMGYVLPWGQMSFWGATVITNLFSAIPYIGTNLV
 EWIWGGFSVDKATLNRFFAFHFILPFTMVALAGVHLTFLHETGSNNPLGLTSDSDKIPFHPYYTIKDFLG
@@ -35,7 +34,7 @@ IENY
     #
 
     it 'parses header and sequence' do
-      e = Entry.parse(FASTA_0)
+      e = Ms::Fasta::Entry.parse(FASTA_0)
       e.header.is "gi|5524211|gb|AAD44166.1| cytochrome b [Elephas maximus maximus]"
       e.sequence.is(
         "LCLYTHIGRNIYYGSYLYSETWNTGIMLLLITMATAFMGYVLPWGQMSFWGATVITNLFSAIPYIGTNLV" +
@@ -44,7 +43,7 @@ IENY
 
     it 'raises error for entries that do not start with gt' do
       
-      lambda { Entry.parse "\n#{FASTA_0}" }.should.raise(RuntimeError).message.should.equal("input should begin with '>'")
+      lambda { Ms::Fasta::Entry.parse "\n#{FASTA_0}" }.should.raise(RuntimeError).message.should.equal("input should begin with '>'")
     end
 
     #
@@ -52,11 +51,11 @@ IENY
     #
 
     def test_entry_initialization
-      e = Entry.new
+      e = Ms::Fasta::Entry.new
       assert_equal("", e.header)
       assert_equal("", e.sequence)
 
-      e = Entry.new "head", "SEQ"
+      e = Ms::Fasta::Entry.new "head", "SEQ"
       assert_equal("head", e.header)
       assert_equal("SEQ", e.sequence)
     end
@@ -66,20 +65,20 @@ IENY
     #
 
     def test_dump_formats_a_fasta_entry
-      e = Entry.new
+      e = Ms::Fasta::Entry.new
       assert_equal(">\n", e.dump)
 
-      e = Entry.new "head", "SEQ"
+      e = Ms::Fasta::Entry.new "head", "SEQ"
       assert_equal(">head\nSEQ\n", e.dump)
     end
 
     def test_dump_formats_output_with_desired_line_length
-      e = Entry.new "header", "ABCDEFGH"
+      e = Ms::Fasta::Entry.new "header", "ABCDEFGH"
       assert_equal(">header\nABC\nDEF\nGH\n", e.dump("", :line_length => 3))
     end
 
     def test_dump_line_length_less_than_1_raises_error
-      e = Entry.new
+      e = Ms::Fasta::Entry.new
       assert_raise(ArgumentError) { e.dump("", :line_length => 0) }
     end
   end

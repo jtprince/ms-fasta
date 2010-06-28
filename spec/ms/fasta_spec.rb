@@ -13,16 +13,17 @@ describe 'basic fasta operations' do
       header + "\n" + data
     end.join("\n")
     @data['carriage_returns_and_newlines'] = @data['newlines'].gsub("\n", "\r\n")
+    @files = {}
     @data.each do |k,v|
       file_key = k + '_file'
       filename = k + '.tmp'
-      @data[file_key] = filename
+      @files[file_key] = filename
       File.open(filename, 'w') {|out| out.print v }
     end
   end
 
   after do
-    @data.select {|k,v| k =~ /_file$/ }.each do |k,filename|
+    @files.select {|k,v| k =~ /_file$/ }.each do |k,filename|
       index = filename.sub('.tmp', '.index')
       [filename, index].each do |fn|
         File.unlink(fn) if File.exist? fn
@@ -43,7 +44,7 @@ describe 'basic fasta operations' do
 
   it 'can read a file' do
     %w(newlines_file carriage_returns_and_newlines_file).each do |file|
-      Ms::Fasta.open(@data[file]) do |fasta|
+      Ms::Fasta.open(@files[file]) do |fasta|
         fasta_correct? fasta
       end
     end
@@ -51,7 +52,7 @@ describe 'basic fasta operations' do
 
   it 'can read an IO object' do
     %w(newlines_file carriage_returns_and_newlines_file).each do |file|
-      File.open(@data[file]) do |io|
+      File.open(@files[file]) do |io|
         fasta = Ms::Fasta.new(io)
         fasta_correct? fasta
       end
@@ -67,7 +68,7 @@ describe 'basic fasta operations' do
 
   it 'iterates entries with foreach' do
     %w(newlines_file carriage_returns_and_newlines_file).each do |file|
-      Ms::Fasta.foreach(@data[file]) do |entry|
+      Ms::Fasta.foreach(@files[file]) do |entry|
         entry.isa Ms::Fasta::Entry 
       end
     end
