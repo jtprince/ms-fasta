@@ -17,6 +17,7 @@ gemspec = Gem::Specification.new do |s|
   s.summary = "An mspire library for working with fasta formatted files"
   s.description = "provides programmatic access to fasta files"
   s.rubyforge_project = 'mspire'
+  s.add_dependency("external", ">= 0.3.1")
   s.add_development_dependency("spec-more", ">= 1.1.0")
 end
 
