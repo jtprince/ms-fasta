@@ -2,6 +2,12 @@
 
 An {Mspire}[http://mspire.rubyforge.org] library for working with {FASTA}[http://en.wikipedia.org/wiki/Fasta_format] files.
 
+NOTE: A simple shell around the bio gem's fasta readers has been implemented
+and is found in ms-core.  It contains more utilities for reading fasta header
+lines, but it is a little slower than this gem.
+
+    gem install ms-core
+
 == Description
 
 * Lighthouse[http://bahuvrihi.lighthouseapp.com/projects/16692-mspire/tickets]
